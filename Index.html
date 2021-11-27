@@ -17,16 +17,31 @@
         input[type="text"]{
             background-color: coral;
         }
+        .divCl {
+            width: 300px;
+            height: 500px;
+            border: 3px solid black;
+            margin: 0 auto;
+            padding: 15px;
+        }
     </style>
+    <script>
+        function addItem() {
+            alert('Введите задачу!')
+        }
+       
+    </script>
+
 </head>
 <body>
+    <div class= "divCl">
     <h3>Мой список задач</h3>
     <br/>
     <input type="text" value= "Ввод задачи"/>
     <br/>
     <br/>
-    <input type= "button" value= "Добавить элемент"/>
-
+    <input type= "button" value= "Добавить элемент" onclick="addItem();"/>
+    </div>
 </body>
 
 </html>

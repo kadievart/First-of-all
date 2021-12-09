@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html> 
+
+<head>
+    <title>
+ To-Do Listic
+    </title>
+    <style>
+        body{
+            padding: 35px;
+        }
+        input[type="button" ]{
+            background-color: rgba(170,235,157,877);
+            width: 140px;
+            height: 20;
+            border-radius: 5px;
+            text-align: center;
+            padding-right: 10px;
+            
+        }
+        input[type="text"]{
+            background-color: rgb(233 227 240  );
+            width: 280px;
+            height: 30px;
+            border-radius: 15px;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+ .divCl {
+            width: 480px;
+            height: 540px;
+            border: 2px solid rgb(32,16,16  );
+            margin: 0 auto;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgb(255,253,240  );
+        
+        }
+
+
+ .item {
+            padding-top: 10px;
+            padding-left: 10px;
+            font-size: 14pt;
+        }
+        {
+  box-sizing: border-box;
+}
+
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  height: 250px; 
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+    </style>
+    <script>
+        function addItem() {
+            let newItem = document.createElement("div");
+            newItem.classList.add("item")
+            newItem.innerHTML = document.getElementById("box").value;
+            newItem.onclick = removeItem;
+            document.getElementById("list").appendChild(newItem);
+            saveList();
+        }
+        function removeItem() {
+            document.getElementById("list").removeChild(this);
+            saveList();
+        }
+
+        function saveList() {
+            localStorage.storageList = document.getElementById("list").innerHTML;
+        }
+
+        function loadList() {
+           document.getElementById("list").innerHTML = localStorage.storageList;
+           for (let i = 0;i < list.children.length; i++) {
+               list.children[i].onclick = removeItem;
+           }
+        }
+    </script>
+
+</head>
+<body>
+    
+    <div class= "divCl">
+    <h3 style= "padding-left: 10px" > <strong>Мой список задач</strong> </h3>
+    <br/>
+    <input type="text" id= "box" value= "Ввод задачи" onfocus="this.value= '' "/>
+    <br/>
+    <br/>
+    <input type= "button" value= "Сохранить задачу" onclick="addItem();"/>
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+          <h2>Столбец 1</h2>
+          <p>Некоторый текст..</p>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+          <h2>Столбец 2</h2>
+          <p>Некоторый текст..</p>
+        </div>
+      </div>
+    
+    <script>
+    if(localStorage.storageList) {
+            loadList(); 
+        } 
+    </script>
+    </div>
+    
+</body>
+
+</html>
